@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  validator-exit:
+    container_name: validator-exit
+    # image: dharmendrakariya/lighthouse-validator-exit:latest ## you can use this as well!
+    build:
+      context: github.com/dharmendrakariya/lighthouse-validator-exit
+      args:
+        LH_VERSION: sigp/lighthouse:v4.5.0
+        NETWORK: gnosis
+    volumes:
+    - ./keystore:/keystore
+    environment:
+      - BEACON_API_URL=http://your_beacon_node_url:port
